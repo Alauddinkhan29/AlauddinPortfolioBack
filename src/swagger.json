@@ -1,0 +1,103 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "My Portfolio API",
+        "description": "API documentation using Swagger",
+        "version": "1.0.0"
+    },
+    "host": "localhost:9003",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/project/add-project": {
+            "post": {
+                "summary": "Add Project",
+                "description": "Add a new project to the database.",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProjectDetails"
+                            },
+                            "example": {
+                                "name": "React Native App",
+                                "description": "A sample React Native project",
+                                "picUrl": "http://example.com/image.png",
+                                "framework": "React Native",
+                                "stateManagementSystem": "Redux",
+                                "programmingLanguage": "JavaScript",
+                                "version": "1.0.0",
+                                "videoUrl": "http://example.com/video.mp4"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Project added successfully!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "success"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Project added successfully!"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ProjectDetails": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "picUrl": {
+                        "type": "string",
+                        "format": "url"
+                    },
+                    "framework": {
+                        "type": "string"
+                    },
+                    "stateManagementSystem": {
+                        "type": "string"
+                    },
+                    "programmingLanguage": {
+                        "type": "string"
+                    },
+                    "version": {
+                        "type": "string"
+                    },
+                    "videoUrl": {
+                        "type": "string",
+                        "format": "url"
+                    }
+                },
+                "required": [
+                    "name",
+                    "description",
+                    "framework"
+                ]
+            }
+        }
+    }
+}
