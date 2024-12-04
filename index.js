@@ -1,12 +1,12 @@
 require('dotenv').config();
 const express = require('express');
-const connectDB = require('./config/database');
+const connectDB = require('./src/config/database');
 const app = express();
 const port = 9003;
-const projectRouter = require('./routers/ProjectDetails')
-const videoRouter = require('./routers/videoRoutes')
+const projectRouter = require('./src/routers/ProjectDetails')
+const videoRouter = require('./src/routers/videoRoutes')
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
+const swaggerDocument = require('./src/swagger.json');
 const bodyParser = require("body-parser");
 console.log("==== index env", process.env.DATABASEURI)
 
