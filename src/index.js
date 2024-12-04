@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const connectDB = require('./config/database');
 const app = express();
-const port = 9003;
+const port = process.env.PORT || 9003;
 const projectRouter = require('./routers/ProjectDetails')
 const videoRouter = require('./routers/videoRoutes')
 const swaggerUi = require('swagger-ui-express');
