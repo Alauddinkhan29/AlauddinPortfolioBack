@@ -132,6 +132,7 @@ const transporter = nodemailer.createTransport({
 // POST API to send email
 router.post("/send-mail", async (req, res) => {
     const { subject, message, email } = req.body;
+    console.log("==== req body", req.body)
 
     if (!subject || !message) {
         return res.status(400).json({ error: "Subject and message are required" });
@@ -141,18 +142,38 @@ router.post("/send-mail", async (req, res) => {
         from: "rcristiano786@gmail.com", // Replace with your email
         to: "alauddinkhan29@gmail.com", // Replace with your receiving email
         subject: subject,
-        text: message,
+        text: `Someone tried to contact you with this ${email} ID and this is the message` + "\n" + `${message}`,
         email: email,
     };
 
     try {
         const info = await transporter.sendMail(mailOptions);
         console.log("Email sent: ", info.response);
-        res.status(200).json({ message: "Email sent successfully", info: info.response });
+        res.status(200).json({ status: "success", message: "Email sent successfully", info: info.response });
     } catch (error) {
         console.error("Error sending email:", error);
         res.status(500).json({ error: "Failed to send email", details: error });
     }
 });
+
+router.post("/send-visitor-details", async (req, res) => {
+    const {
+        deviceModel,
+        osVersion,
+        appVersion,
+        language,
+        region,
+        ipAddress,
+        installTime,
+        lastUpdateTime
+    } = req.body;
+
+    try {
+
+    } catch (err) {
+
+    }
+})
+
 
 module.exports = router;
