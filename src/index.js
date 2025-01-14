@@ -1,4 +1,4 @@
-require('dotenv').config({ path: './src/.env' });
+require('dotenv').config({ path: './.env' });
 const express = require('express');
 const connectDB = require('./config/database');
 const app = express();
@@ -8,7 +8,7 @@ const videoRouter = require('./routers/videoRoutes')
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 const bodyParser = require("body-parser");
-console.log("==== index env", process.env.DATABASEURI)
+// console.log("==== dotenv", dotenv)
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,6 +20,44 @@ app.use(express.json())
 
 app.use(projectRouter)
 app.use(videoRouter)
+
+const admin = require('firebase-admin');
+
+// Replace with the path to your service account JSON file
+const serviceAccount = require('./portfolio-92be3-d71a1d319d7c.json');
+
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+});
+
+console.log('Firebase Admin Initialized');
+
+const sendNotification = async () => {
+    const deviceToken = 'ea7RkCTeRcGq_1tkPz6psX:APA91bGrg-qQtE8K4XuZbNx7teq47o7rMcsFFawcdEsQVkwEJARPhtaMyABvNpTINmiw9JY9WsnJiOXtb0yi-W2WC45RAlTYaWMax6o_U-z--sXHtHB6DB4';
+
+    const message = {
+        token: deviceToken,
+        notification: {
+            title: 'Test Notification',
+            body: 'This is a test message from Firebase Cloud Messaging',
+        },
+        data: {
+            customKey: 'customValue', // Optional: Add custom data
+            screen: 'About', // This is the custom data to identify which screen to navigate to
+        },
+    };
+
+    try {
+        const response = await admin.messaging().send(message);
+        console.log('Notification sent successfully:', response);
+    } catch (error) {
+        console.error('Error sending notification:', error);
+    }
+};
+
+// sendNotification();
+
+
 
 connectDB()
     .then((res) => {
