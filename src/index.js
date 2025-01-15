@@ -24,13 +24,12 @@ app.use(videoRouter)
 const admin = require('firebase-admin');
 
 // Replace with the path to your service account JSON file
-const serviceAccount = require('./portfolio-92be3-d71a1d319d7c.json');
+// const serviceAccount = require('./portfolio-92be3-d71a1d319d7c.json');
 
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-});
+// admin.initializeApp({
+//     credential: admin.credential.cert(serviceAccount),
+// });
 
-console.log('Firebase Admin Initialized');
 
 const sendNotification = async () => {
     const deviceToken = 'ea7RkCTeRcGq_1tkPz6psX:APA91bGrg-qQtE8K4XuZbNx7teq47o7rMcsFFawcdEsQVkwEJARPhtaMyABvNpTINmiw9JY9WsnJiOXtb0yi-W2WC45RAlTYaWMax6o_U-z--sXHtHB6DB4';

@@ -4,11 +4,8 @@ const mongoose = require('mongoose');
 
 
 const connectDB = async () => {
-    // console.log("=== env", process.env.TZ);
     try {
         const uri = process.env.DATABASEURI;
-
-        console.log("==== uri", uri)
         await mongoose.connect(uri);
 
         console.log('MongoDB connected successfully');
