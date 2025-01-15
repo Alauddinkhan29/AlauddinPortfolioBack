@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 
 const connectDB = async () => {
-    console.log("=== env", process.env.TZ);
+    // console.log("=== env", process.env.TZ);
     try {
         const uri = process.env.DATABASEURI;
 
