@@ -1,6 +1,8 @@
 const express = require("express");
 const multer = require("multer");
+const fs = require('fs');
 const cloudinary = require("cloudinary").v2;
+const path = require('path');
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 
 const router = express.Router();
@@ -22,6 +24,22 @@ const storage = new CloudinaryStorage({
 });
 
 const upload = multer({ storage });
+
+// Multer and Cloudinary Storage Configuration for CV
+const CVstorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        fs.mkdir('./uploads/', (err) => {
+            cb(null, './uploads/');
+        });
+        // cb(null, 'uploads/'); // Destination folder for the file
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + file.originalname); // Unique filename
+    }
+});
+
+const uploadCv = multer({ storage: CVstorage })
+
 
 // Multer and Cloudinary Storage Configuration
 const imageStorage = new CloudinaryStorage({
@@ -88,5 +106,33 @@ router.post("/upload-image", uploadImage.single("image"), async (req, res) => {
         res.status(500).json({ message: "Error uploading image", error });
     }
 });
+
+// Upload API
+router.post("/upload-cv", uploadCv.single('file'), async (req, res) => {
+    console.log("=== req", req.file)
+    if (!req.file) {
+        return res.status(400).json({ success: false, message: "No file uploaded" });
+    }
+    try {
+        const filePath = req.file.path;
+        console.log("file path", filePath)
+
+        const result = await cloudinary.uploader.upload(filePath, {
+            resource_type: 'raw',   // Very important for PDF
+            folder: 'cv_files',     // Optional: organize under a folder
+            public_id: path.parse(req.file.originalname).name, // Name without extension
+        });
+
+        res.json({
+            success: true,
+            url: result.secure_url,
+        });
+    } catch (error) {
+        console.log("Error uploading cv:", error);
+        console.error(error);
+        res.status(500).json({ success: false, message: 'Upload failed' });
+    }
+});
+
 
 module.exports = router;
