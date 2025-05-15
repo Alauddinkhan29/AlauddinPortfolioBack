@@ -116,9 +116,9 @@ router.get("/project/get-projects-per-framework", async (req, res) => {
 
 
         // console.log("=== final proj arr", finalProjectsArr)
-        setTimeout(() => {
-            return res.status(200).send({ status: "success", message: "Projects fetched successfully!", data: finalProjectsArr })
-        }, 3000)
+        // setTimeout(() => {
+        return res.status(200).send({ status: "success", message: "Projects fetched successfully!", data: finalProjectsArr })
+        // }, 3000)
     } catch (err) {
         console.log("=== error in all projects", err)
         res.status(500).send(err)
