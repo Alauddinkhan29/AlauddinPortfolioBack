@@ -6,6 +6,7 @@ const port = process.env.PORT || 9003;
 const projectRouter = require('./routers/ProjectDetails')
 const videoRouter = require('./routers/videoRoutes')
 const userRouter = require('./routers/User')
+const articlesRouter = require('./routers/Aritcles')
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 const bodyParser = require("body-parser");
@@ -28,6 +29,7 @@ app.use(express.json())
 app.use(projectRouter)
 app.use(videoRouter)
 app.use(userRouter)
+app.use(articlesRouter)
 
 const admin = require('firebase-admin');
 const { handleConnection } = require('./controllers/SocketController');
