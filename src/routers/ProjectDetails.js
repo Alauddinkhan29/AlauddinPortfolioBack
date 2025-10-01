@@ -92,7 +92,7 @@ router.get("/project/get-projects-per-framework", async (req, res) => {
         // 1. Check Redis cache
         const cachedData = await redisClient.get(cacheKey);
         if (cachedData) {
-            console.log("📦 Cache HIT - Returning from Redis");
+            console.log("📦 Cache HIT - Returning from Redis project per framework");
             return res.status(200).send({
                 status: "success",
                 message: "Projects fetched from cache!",
@@ -100,7 +100,7 @@ router.get("/project/get-projects-per-framework", async (req, res) => {
             });
         }
         // 2. Cache MISS – Fetch from DB
-        console.log("🔍 Cache MISS - Querying MongoDB");
+        console.log("🔍 Cache MISS - Querying MongoDB project per framework");
         const allProjects = await ProjectDetails.find({ framework })
         // console.log("=== all project", allProjects)
         const finalProjectsArr = allProjects.map((item) => {
@@ -112,7 +112,7 @@ router.get("/project/get-projects-per-framework", async (req, res) => {
         })
 
         // 3. Store in Redis without expiry
-        await redisClient.setEx(cacheKey, 60, JSON.stringify(finalProjectsArr));
+        await redisClient.setEx(cacheKey, 5, JSON.stringify(finalProjectsArr));
 
 
         // console.log("=== final proj arr", finalProjectsArr)
