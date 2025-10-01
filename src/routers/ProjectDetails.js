@@ -112,7 +112,7 @@ router.get("/project/get-projects-per-framework", async (req, res) => {
         })
 
         // 3. Store in Redis without expiry
-        await redisClient.set(cacheKey, 60, JSON.stringify(finalProjectsArr));
+        await redisClient.setEx(cacheKey, 60, JSON.stringify(finalProjectsArr));
 
 
         // console.log("=== final proj arr", finalProjectsArr)
