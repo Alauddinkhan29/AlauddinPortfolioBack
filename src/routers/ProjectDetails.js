@@ -90,15 +90,15 @@ router.get("/project/get-projects-per-framework", async (req, res) => {
     const cacheKey = `projects:framework:${framework}`;
     try {
         // 1. Check Redis cache
-        const cachedData = await redisClient.get(cacheKey);
-        if (cachedData) {
-            console.log("📦 Cache HIT - Returning from Redis project per framework");
-            return res.status(200).send({
-                status: "success",
-                message: "Projects fetched from cache!",
-                data: JSON.parse(cachedData),
-            });
-        }
+        // const cachedData = await redisClient.get(cacheKey);
+        // if (cachedData) {
+        //     console.log("📦 Cache HIT - Returning from Redis project per framework");
+        //     return res.status(200).send({
+        //         status: "success",
+        //         message: "Projects fetched from cache!",
+        //         data: JSON.parse(cachedData),
+        //     });
+        // }
         // 2. Cache MISS – Fetch from DB
         console.log("🔍 Cache MISS - Querying MongoDB project per framework");
         const allProjects = await ProjectDetails.find({ framework })
