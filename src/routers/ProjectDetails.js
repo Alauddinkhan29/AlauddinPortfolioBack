@@ -133,15 +133,15 @@ router.get("/project/get-project-detail", async (req, res) => {
         return res.status(400).send({ status: "fail", message: "projectId is required" });
     }
     try {
-        const cachedData = await redisClient.get(`project:${projectId}`);
-        if (cachedData) {
-            console.log("✅ Cache HIT");
-            return res.status(200).send({
-                status: "success",
-                message: "Project fetched from cache!",
-                data: JSON.parse(cachedData)
-            });
-        }
+        // const cachedData = await redisClient.get(`project:${projectId}`);
+        // if (cachedData) {
+        //     console.log("✅ Cache HIT");
+        //     return res.status(200).send({
+        //         status: "success",
+        //         message: "Project fetched from cache!",
+        //         data: JSON.parse(cachedData)
+        //     });
+        // }
         const projectDetail = await ProjectDetails.findById({ _id: projectId })
         if (!projectDetail) {
             return res.status(404).send({ status: "fail", message: "Project not found" });
@@ -149,7 +149,7 @@ router.get("/project/get-project-detail", async (req, res) => {
         // / 3. Store result in Redis cache (optional expiration of 1 hour)
         // await redisClient.setEx(`project:${projectId}`, 3600, JSON.stringify(projectDetail));
 
-        await redisClient.set(`project:${projectId}`, JSON.stringify(projectDetail));
+        await redisClient.setEx(`project:${projectId}`, 10, JSON.stringify(projectDetail));
 
         console.log("📦 Cache MISS → Fetched from DB");
         // console.log("=== all project", projectDetail)
