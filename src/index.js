@@ -2,6 +2,18 @@ require('dotenv').config({ path: './src/.env' });
 const express = require('express');
 const connectDB = require('./config/database');
 const app = express();
+const cors = require("cors");
+
+app.use(cors({
+    origin: [
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "https://alauddin-portfolio.vercel.app" // your future deployed frontend
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+}));
+
 const port = process.env.PORT || 9003;
 const projectRouter = require('./routers/ProjectDetails')
 const videoRouter = require('./routers/videoRoutes')
