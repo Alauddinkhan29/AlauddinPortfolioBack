@@ -8,7 +8,7 @@ app.use(cors({
     origin: [
         "http://localhost:3000",
         "http://127.0.0.1:3000",
-        "https://alauddin-khan-portfolio-web.vercel.app/"
+        "https://alauddin-khan-portfolio-web.vercel.app"
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
