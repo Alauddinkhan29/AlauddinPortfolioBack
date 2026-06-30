@@ -14,6 +14,8 @@ app.use(cors({
     credentials: true
 }));
 
+app.get('/health', (req, res) => res.status(200).send('OK'));
+
 const port = process.env.PORT || 9003;
 const projectRouter = require('./routers/ProjectDetails')
 const videoRouter = require('./routers/videoRoutes')
