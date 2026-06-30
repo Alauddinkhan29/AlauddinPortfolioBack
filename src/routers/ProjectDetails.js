@@ -112,7 +112,7 @@ router.get("/project/get-projects-per-framework", async (req, res) => {
         })
 
         // 3. Store in Redis without expiry
-        await redisClient.setEx(cacheKey, 5, JSON.stringify(finalProjectsArr));
+        // await redisClient.setEx(cacheKey, 5, JSON.stringify(finalProjectsArr));
 
 
         // console.log("=== final proj arr", finalProjectsArr)
@@ -149,7 +149,7 @@ router.get("/project/get-project-detail", async (req, res) => {
         // / 3. Store result in Redis cache (optional expiration of 1 hour)
         // await redisClient.setEx(`project:${projectId}`, 3600, JSON.stringify(projectDetail));
 
-        await redisClient.setEx(`project:${projectId}`, 10, JSON.stringify(projectDetail));
+        // await redisClient.setEx(`project:${projectId}`, 10, JSON.stringify(projectDetail));
 
         console.log("📦 Cache MISS → Fetched from DB");
         // console.log("=== all project", projectDetail)

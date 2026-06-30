@@ -36,7 +36,7 @@ const express = require('express');
 const router = express.Router();
 const Parser = require('rss-parser'); // Make sure rss-parser is installed
 const parser = new Parser();
-const redisClient = require('../Clients/RedicClients'); // your redis client
+// const redisClient = require('../Clients/RedicClients'); // your redis client
 
 // API route to fetch Medium articles with caching
 router.get("/api/articles", async (req, res) => {
@@ -44,11 +44,11 @@ router.get("/api/articles", async (req, res) => {
         const cacheKey = "medium_articles";
 
         // 1. Check cache first
-        const cachedArticles = await redisClient.get(cacheKey);
-        if (cachedArticles) {
-            console.log("✅ Returning cached articles");
-            return res.json(JSON.parse(cachedArticles));
-        }
+        // const cachedArticles = await redisClient.get(cacheKey);
+        // if (cachedArticles) {
+        //     console.log("✅ Returning cached articles");
+        //     return res.json(JSON.parse(cachedArticles));
+        // }
 
         // 2. Fetch from Medium if cache miss
         const feed = await parser.parseURL("https://medium.com/feed/@alauddinkhan29");
@@ -62,7 +62,7 @@ router.get("/api/articles", async (req, res) => {
         }));
 
         // 3. Save in Redis (set TTL = 600 seconds = 10 minutes)
-        await redisClient.setEx(cacheKey, 600, JSON.stringify(articles));
+        // await redisClient.setEx(cacheKey, 600, JSON.stringify(articles));
 
         console.log("📡 Fetched fresh articles from Medium");
         res.json(articles);
