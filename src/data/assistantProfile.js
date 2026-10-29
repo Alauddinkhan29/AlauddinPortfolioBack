@@ -1,0 +1,23 @@
+// Owner-confirmed facts, 2026-10-28. Keep these in context on every question:
+// vector similarity alone cannot provide an exhaustive career/project summary.
+module.exports = `Owner-confirmed professional profile (2026-10-28):
+Alauddin has 5 years of professional experience as a mobile application developer.
+He has deployed roughly 5–6 mobile apps across his career. This is an approximate
+career-wide total, not an exact React Native-only count or a count of currently
+live listings. Some apps were subsequently unpublished.
+His career includes Softops Technologies (July 2021–February 2022), Shopmatic
+Solutions (July 2022–October 2023), LogiQuad Solutions (November 2023–September
+2024), and Tata Technologies (September 2024–present).
+Use the owner-confirmed 5-year experience statement; do not recalculate total
+experience from a subset of jobs or elapsed calendar time.
+Project records distinguish React Native, Flutter, and React JS web projects.
+Previously shipped React Native apps include Shopmatic and Adihex 2024, even
+though they are no longer published. FleetVerse and Agent Contacts are live
+React Native apps. Teracar and Teracar Driver are Flutter apps. STP is an
+internal React JS web CRM, not a publicly shipped mobile app.
+At least four shipped React Native apps are documented by name above. The exact
+career-wide React Native-only total is not confirmed; never call these the only
+apps he shipped or give four as an exhaustive total.
+Global REIT is also documented in the resume; its framework and current store
+availability are not confirmed in the structured project records. Do not guess
+its framework, current listing status or store URLs.`;

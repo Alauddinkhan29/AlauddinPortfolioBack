@@ -4,6 +4,11 @@ const connectDB = require('./config/database');
 const app = express();
 const cors = require("cors");
 
+// Render sits in front of this app as a reverse proxy; without this,
+// express-rate-limit (used on /api/chat) sees Render's IP for every
+// request instead of the real client IP.
+app.set('trust proxy', 1);
+
 app.use(cors({
     origin: [
         "http://localhost:3000",
@@ -14,13 +19,16 @@ app.use(cors({
     credentials: true
 }));
 
-app.get('/health', (req, res) => res.status(200).send('OK'));
+//cache test
 
 const port = process.env.PORT || 9003;
 const projectRouter = require('./routers/ProjectDetails')
 const videoRouter = require('./routers/videoRoutes')
 const userRouter = require('./routers/User')
 const articlesRouter = require('./routers/Aritcles')
+const chatRouter = require('./routers/Chat')
+const { warmUpEmbeddings, isEmbeddingReady } = require('./services/embeddingService')
+const mongoose = require('mongoose')
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 const bodyParser = require("body-parser");
@@ -44,6 +52,15 @@ app.use(projectRouter)
 app.use(videoRouter)
 app.use(userRouter)
 app.use(articlesRouter)
+app.get('/health', (req, res) => res.status(200).json({ status: 'ok' }));
+app.get('/ready', (req, res) => {
+    const database = mongoose.connection.readyState === 1;
+    const embedding = isEmbeddingReady();
+    return res.status(database && embedding ? 200 : 503).json({
+        status: database && embedding ? 'ready' : 'not_ready', database, embedding,
+    });
+});
+app.use(chatRouter)
 
 const admin = require('firebase-admin');
 const { handleConnection } = require('./controllers/SocketController');
@@ -91,7 +108,14 @@ connectDB()
         server.listen(port, () => {
             console.log(`===== server started and running at ${port}`)
         })
+
+        // Loading the embedding model takes seconds; do it now so the first
+        // /api/chat request doesn't pay for it.
+        warmUpEmbeddings()
+            .then(() => console.log('=== embedding model ready'))
+            .catch((err) => console.error('=== embedding model failed to load', err))
     })
     .catch((err) => {
         console.log("===err", err)
     })
+// bind mount test
