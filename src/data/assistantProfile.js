@@ -10,10 +10,11 @@ reports substantial experience with AWS and Docker. Do not characterise his
 backend or cloud skills as merely limited or beginner-level based on the mobile
 focus of the resume. Owner-confirmed backend project examples include Zaykaa,
 a food-delivery support assistant prototype with a Python backend and React
-frontend; his portfolio, which has a
-Node.js backend and React frontend; Parking Slots and Splitwise projects built
-with Node.js; and
-e-commerce and BookMyShow projects built with Spring Boot. These are project
+frontend; a separate Parking Booking System built end-to-end with Python; his
+portfolio, which has a Node.js backend and React frontend; a separate Parking
+Slots System and a Splitwise project built with Node.js; and e-commerce and
+BookMyShow projects built with Spring Boot. The Python Parking Booking System
+and Node.js Parking Slots System are distinct projects. These are project
 examples; do not imply affiliation with Splitwise or BookMyShow companies.
 Beyond the documented Zaykaa description, these new project names and stacks
 are examples only: their feature details, deployment status and company

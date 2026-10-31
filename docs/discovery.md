@@ -97,4 +97,4 @@ Assistant follow-ups (2026-10-28): send at most four completed user/assistant pa
 - Zaykaa: Python backend and React frontend.
 - Portfolio: Node.js backend and React frontend.
 - Parking Slots and Splitwise projects: Node.js. Spring Boot projects: e-commerce and BookMyShow. Do not infer company affiliation, features or live status.
-- Whether a separate Parking Booking project also uses Python is awaiting clarification; do not assert that mapping or assume the two parking descriptions refer to different projects.
+- Parking Booking System: Python, built end-to-end. It is a distinct project from the Node.js Parking Slots System.
