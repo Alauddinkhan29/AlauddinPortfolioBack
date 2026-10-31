@@ -84,3 +84,10 @@ Rules 2, 3 and 5 all turn a question the assistant can't answer into a **contact
 - Documented shipped RN examples: FleetVerse, Agent Contacts, Shopmatic and Adihex 2024; the latter two are unpublished. Teracar and Teracar Driver are Flutter; STP is an internal React JS web CRM. Global REIT appears in the resume, but its framework and current store availability are not confirmed in structured records. Do not infer an exhaustive RN count.
 
 Assistant follow-ups (2026-10-28): send at most four completed user/assistant pairs from browser memory. Use history to resolve references, never as verified factual evidence. Clear chat/reload removes it. Replies support safe Markdown formatting. Contact redirects refer to the existing contact section (WhatsApp/email), as the current frontend has no contact form.
+
+
+## 11. Owner-confirmed backend and cloud skills (2026-10-31)
+
+- Alauddin reports strong backend development experience with Python, Spring Boot and Node.js, and multiple backend projects across these technologies.
+- He reports substantial cloud experience with AWS and Docker. Specific AWS services, durations and project details have not been confirmed; do not infer them.
+- He confirms approximately 4–5 projects in each of Python, Spring Boot and Node.js; this is per technology, not a combined total. Whether projects overlap is not confirmed.

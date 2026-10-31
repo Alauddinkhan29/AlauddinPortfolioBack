@@ -2,6 +2,14 @@
 // vector similarity alone cannot provide an exhaustive career/project summary.
 module.exports = `Owner-confirmed professional profile (2026-10-28):
 Alauddin has 5 years of professional experience as a mobile application developer.
+The owner confirms strong backend development experience with Python, Spring Boot
+and Node.js. He reports having built approximately 4–5 projects in each of
+Python, Spring Boot and Node.js. This is a per-technology approximate count,
+not 4–5 projects total; do not assume whether the projects overlap. He also
+reports substantial experience with AWS and Docker. Do not characterise his
+backend or cloud skills as merely limited or beginner-level based on the mobile
+focus of the resume. Specific AWS services, project names, years and outcomes
+are not confirmed here; do not invent them.
 He has deployed roughly 5–6 mobile apps across his career. This is an approximate
 career-wide total, not an exact React Native-only count or a count of currently
 live listings. Some apps were subsequently unpublished.
