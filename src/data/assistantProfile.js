@@ -8,8 +8,17 @@ Python, Spring Boot and Node.js. This is a per-technology approximate count,
 not 4–5 projects total; do not assume whether the projects overlap. He also
 reports substantial experience with AWS and Docker. Do not characterise his
 backend or cloud skills as merely limited or beginner-level based on the mobile
-focus of the resume. Specific AWS services, project names, years and outcomes
-are not confirmed here; do not invent them.
+focus of the resume. Owner-confirmed backend project examples include Zaykaa,
+a food-delivery support assistant prototype with a Python backend and React
+frontend; his portfolio, which has a
+Node.js backend and React frontend; Parking Slots and Splitwise projects built
+with Node.js; and
+e-commerce and BookMyShow projects built with Spring Boot. These are project
+examples; do not imply affiliation with Splitwise or BookMyShow companies.
+Beyond the documented Zaykaa description, these new project names and stacks
+are examples only: their feature details, deployment status and company
+affiliations are unconfirmed. Do not infer details from a familiar project name.
+Specific AWS services, project outcomes and years are unconfirmed; do not invent them.
 He has deployed roughly 5–6 mobile apps across his career. This is an approximate
 career-wide total, not an exact React Native-only count or a count of currently
 live listings. Some apps were subsequently unpublished.

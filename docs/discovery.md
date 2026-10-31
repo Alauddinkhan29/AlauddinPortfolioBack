@@ -89,5 +89,12 @@ Assistant follow-ups (2026-10-28): send at most four completed user/assistant pa
 ## 11. Owner-confirmed backend and cloud skills (2026-10-31)
 
 - Alauddin reports strong backend development experience with Python, Spring Boot and Node.js, and multiple backend projects across these technologies.
-- He reports substantial cloud experience with AWS and Docker. Specific AWS services, durations and project details have not been confirmed; do not infer them.
+- He reports substantial cloud experience with AWS and Docker. Specific AWS services, durations and project details beyond the owner-confirmed examples have not been confirmed; do not infer them.
 - He confirms approximately 4–5 projects in each of Python, Spring Boot and Node.js; this is per technology, not a combined total. Whether projects overlap is not confirmed.
+
+## 12. Owner-confirmed backend project examples (2026-10-31)
+
+- Zaykaa: Python backend and React frontend.
+- Portfolio: Node.js backend and React frontend.
+- Parking Slots and Splitwise projects: Node.js. Spring Boot projects: e-commerce and BookMyShow. Do not infer company affiliation, features or live status.
+- Whether a separate Parking Booking project also uses Python is awaiting clarification; do not assert that mapping or assume the two parking descriptions refer to different projects.
